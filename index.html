@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>SpendSmart v3 — SMS Intelligence</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Instrument+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<nav>
+  <div class="logo">
+    ◈ SpendSmart
+    <span class="logo-pill">v3 · SMS Intelligence</span>
+  </div>
+  <div class="nav-right">
+    <button class="icon-btn" onclick="toggleTheme()" title="Toggle theme">☀️</button>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <!-- SALARY SETUP -->
+  <div class="salary-setup" id="salarySetup">
+    <div class="sec-title">💼 Step 1 — Your Details</div>
+    <div class="setup-grid">
+      <div>
+        <div class="field-label">Monthly Net Salary (₹)</div>
+        <input class="field-input" id="salaryInput" type="number" placeholder="e.g. 75000" min="0"/>
+      </div>
+      <div>
+        <div class="field-label">Your Name (optional)</div>
+        <input class="field-input" id="nameInput" type="text" placeholder="e.g. Arjun"/>
+      </div>
+      <button class="primary-btn" onclick="confirmSalary()">Save →</button>
+    </div>
+    <div class="salary-detected" id="salaryDetected"></div>
+  </div>
+
+  <!-- SMS INPUT -->
+  <div class="sms-zone" id="smsZone">
+    <div class="sms-zone-header">
+      <div>
+        <div class="sec-title" style="margin-bottom:4px">📱 Step 2 — Paste Your Bank SMS Messages</div>
+        <h2>Paste all SMS messages below</h2>
+      </div>
+      <div class="bank-tags">
+        <span class="bank-tag">SBI</span>
+        <span class="bank-tag">HDFC</span>
+        <span class="bank-tag">ICICI</span>
+        <span class="bank-tag">Axis</span>
+        <span class="bank-tag">Kotak</span>
+        <span class="bank-tag">PNB</span>
+        <span class="bank-tag">BOI</span>
+        <span class="bank-tag">Canara</span>
+        <span class="bank-tag">Yes Bank</span>
+        <span class="bank-tag">IndusInd</span>
+        <span class="bank-tag">+ more</span>
+      </div>
+    </div>
+    <!-- FILE UPLOAD OPTION -->
+    <div class="file-upload-row">
+      <label class="file-upload-label" id="fileUploadLabel">
+        <input type="file" id="smsFileInput" accept=".txt,.xml" hidden/>
+        <span class="file-upload-icon">📎</span>
+        <div>
+          <div class="file-upload-title">Upload .txt or XML file</div>
+          <div class="file-upload-sub">Works on Android & iOS — save SMS to Notes/WhatsApp, export as .txt</div>
+        </div>
+        <span class="file-upload-arrow">→</span>
+      </label>
+      <div class="file-divider"><span>or paste manually below</span></div>
+    </div>
+
+    <textarea
+      class="sms-textarea"
+      id="smsInput"
+      placeholder="Paste your bank SMS messages here. Any format works — just paste everything!
+
+Example messages supported:
+HDFC Bank: Rs.450.00 debited from a/c XX1234 on 03-03-24 at ZOMATO. Avl Bal:Rs.24,550.00
+SBI: Your a/c XX5678 debited by Rs.1,200 on 15/03/24. Info: ELECTRICITY BILL. Avail Bal: Rs.18,300
+ICICI Bank: INR 2,500.00 debited from account XX9012 on 10-03-2024. Info: AMAZON. Avl Bal: INR 52,400.00
+Axis Bank: Rs.999 debited from your a/c XX3456 on 08/03/24 for NETFLIX. Available Bal: Rs.31,001
+Kotak: Spent Rs.680.00 on your Kotak Debit Card XX7890 at SWIGGY on 12-Mar-24.
+YES BANK: Rs.12,000/- debited from Acct XX2233 on 01/03/2024. Remarks: EMI PAYMENT"></textarea>
+    <div class="sms-actions">
+      <button class="primary-btn" onclick="parseSMS()">🔍 Parse SMS →</button>
+      <button class="ghost-btn" onclick="loadSampleSMS()">⬇ Load Sample SMS</button>
+      <span class="parse-status" id="parseStatus"></span>
+    </div>
+  </div>
+
+  <!-- PARSED PREVIEW -->
+  <div class="preview-card" id="previewCard">
+    <div class="preview-header">
+      <h3>📋 Parsed Transactions — Review Before Analyzing</h3>
+      <span class="badge-count" id="parsedCount">0 found</span>
+    </div>
+    <div class="preview-scroll">
+      <table>
+        <thead>
+          <tr><th>Date</th><th>Description</th><th>Category</th><th>Amount</th><th>Type</th><th>Bank</th></tr>
+        </thead>
+        <tbody id="previewTableBody"></tbody>
+      </table>
+    </div>
+    <div style="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap;">
+      <button class="primary-btn" onclick="analyzeAll()">✦ Analyze All →</button>
+      <button class="ghost-btn" onclick="resetSMS()">← Re-paste SMS</button>
+      <span style="font-size:12px;color:var(--muted);align-self:center;">Unrecognized rows are shown dimmed — you can still analyze</span>
+    </div>
+  </div>
+
+  <!-- DASHBOARD -->
+  <div class="dashboard" id="dashboard">
+
+    <!-- TOAST NOTIFICATION -->
+    <div id="toastContainer"></div>
+
+    <!-- HERO -->
+    <div class="health-hero">
+      <div class="health-top">
+        <div class="health-salary">
+          Monthly Salary
+          <!-- DISPLAY MODE -->
+          <span id="heroSalary" onclick="startSalaryEdit()" title="Click to edit salary">₹0 ✎</span>
+          <!-- EDIT MODE (hidden by default) -->
+          <div id="salaryEditForm" style="display:none;margin-top:8px;display:none;align-items:center;gap:8px;flex-wrap:wrap;">
+            <input class="field-input" id="heroSalaryInput" type="number" placeholder="New salary ₹" style="width:160px;font-size:14px;padding:8px 12px;"/>
+            <button class="primary-btn" style="padding:8px 16px;font-size:13px;" onclick="saveSalaryEdit()">Save</button>
+            <button class="ghost-btn" style="padding:7px 14px;font-size:13px;" onclick="cancelSalaryEdit()">Cancel</button>
+          </div>
+        </div>
+        <div class="health-chips">
+          <div class="chip spent">💸 Spent: <strong id="chipSpent">₹0</strong></div>
+          <div class="chip saved">🏦 Saved: <strong id="chipSaved">₹0</strong></div>
+          <div class="chip remain">💳 Remaining: <strong id="chipRemain">₹0</strong></div>
+        </div>
+      </div>
+      <div class="alloc-title">How your salary is allocated</div>
+      <div id="allocBars"></div>
+    </div>
+
+    <!-- STATS -->
+    <div class="stats-grid">
+      <div class="stat-card"><div class="stat-label">Total Spent</div><div class="stat-value red" id="stTotal">₹0</div><div class="stat-sub" id="stTxns">—</div></div>
+      <div class="stat-card"><div class="stat-label">Savings Rate</div><div class="stat-value green" id="stSavRate">0%</div><div class="stat-sub">of monthly salary</div></div>
+      <div class="stat-card"><div class="stat-label">Avg Transaction</div><div class="stat-value" id="stAvg">₹0</div><div class="stat-sub">per transaction</div></div>
+      <div class="stat-card"><div class="stat-label">Biggest Expense</div><div class="stat-value yellow" id="stBig">₹0</div><div class="stat-sub" id="stBigDesc">—</div></div>
+      <div class="stat-card"><div class="stat-label">Top Category</div><div class="stat-value" id="stTopCat" style="font-size:16px">—</div><div class="stat-sub" id="stTopCatAmt">—</div></div>
+    </div>
+
+    <!-- BUDGET ALLOC -->
+    <div class="budget-table-card">
+      <div class="sec-title">🤖 AI-Suggested Budget vs Actual Spend</div>
+      <div style="font-size:13px;color:var(--muted);margin-bottom:4px;" id="budgetMethodNote"></div>
+      <div class="budget-alloc-grid" id="budgetAllocGrid"></div>
+    </div>
+
+    <!-- ANOMALIES -->
+    <div class="anomaly-section" id="anomalySection"></div>
+
+    <!-- CHARTS -->
+    <div class="charts-row">
+      <div class="chart-card"><div class="sec-title">Category Breakdown</div><canvas id="pieChart"></canvas></div>
+      <div class="chart-card"><div class="sec-title">Monthly Salary vs Expenses</div><canvas id="barChart"></canvas></div>
+    </div>
+
+    <!-- SAVINGS GOALS -->
+    <div class="savings-card">
+      <div class="sec-title">🎯 Savings Goals</div>
+      <div class="budget-alloc-grid" id="goalsGrid"></div>
+      <div class="add-goal-form">
+        <input class="field-input" id="goalName" placeholder="Goal name (e.g. MacBook)"/>
+        <input class="field-input" id="goalTarget" type="number" placeholder="Target ₹"/>
+        <button class="primary-btn" onclick="addGoal()">+ Add Goal</button>
+      </div>
+    </div>
+
+    <!-- AI INSIGHTS -->
+    <div class="ai-card">
+      <div class="ai-header">
+        <div class="sec-title" style="margin:0">✦ AI Financial Advisor</div>
+        <span class="ai-badge">Powered by Claude</span>
+      </div>
+      <p id="insightText" style="color:var(--muted)">Waiting for data…</p>
+    </div>
+
+    <!-- TOP TABLE -->
+    <div class="table-card">
+      <div class="sec-title">Top 10 Transactions</div>
+      <table>
+        <thead><tr><th>Date</th><th>Description</th><th>Category</th><th>Amount</th><th>Bank</th><th>% of Salary</th></tr></thead>
+        <tbody id="topTableBody"></tbody>
+      </table>
+    </div>
+
+    <button class="ghost-btn" style="margin:0 auto;display:block;" onclick="resetAll()">← Analyze New SMS</button>
+
+  </div><!-- /dashboard -->
+
+  <footer>SpendSmart v3 &mdash; SMS Intelligence &mdash; Powered by Claude AI</footer>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

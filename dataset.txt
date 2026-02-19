@@ -1,0 +1,73 @@
+HDFC Bank: Rs.75,000.00 credited to a/c XX1234 on 01-03-24. Info: SALARY MARCH 2024. Avl Bal:Rs.82,450.00
+
+HDFC Bank: Rs.450.00 debited from a/c XX1234 on 02-03-24 at ZOMATO. Avl Bal:Rs.82,000.00
+
+HDFC Bank: Rs.12,000.00 debited from a/c XX1234 on 07-03-24 at HDFC BANK EMI. Avl Bal:Rs.70,000.00
+
+HDFC Bank: Rs.649.00 debited from a/c XX1234 on 13-03-24 at HOTSTAR PREMIUM. Avl Bal:Rs.69,351.00
+
+HDFC Bank: Rs.730.00 debited from a/c XX1234 on 17-03-24 at SWIGGY ORDER. Avl Bal:Rs.68,621.00
+
+HDFC Bank: Rs.3,200.00 debited from a/c XX1234 on 20-03-24 at AMAZON SHOPPING. Avl Bal:Rs.65,421.00
+
+SBI: Your a/c XX5678 is debited by Rs.1,200 on 03/03/24. Info: ELECTRICITY BILL BESCOM. Avail Bal: Rs.14,500.00
+
+SBI: Your a/c XX5678 is debited by Rs.3,500 on 08/03/24. Info: BYJU COURSE FEE. Avail Bal: Rs.11,000.00
+
+SBI: Your a/c XX5678 is debited by Rs.2,400 on 14/03/24. Info: IRCTC TRAIN TICKET. Avail Bal: Rs.8,600.00
+
+SBI: Your a/c XX5678 is debited by Rs.500 on 19/03/24. Info: SPOTIFY PREMIUM. Avail Bal: Rs.8,100.00
+
+ICICI Bank: INR 2,500.00 debited from account XX9012 on 04-03-2024. Info: AMAZON SHOPPING. Avl Bal: INR 52,400.00
+
+ICICI Bank: INR 890.00 debited from account XX9012 on 09-03-2024. Info: ZOMATO ORDER. Avl Bal: INR 51,510.00
+
+ICICI Bank: INR 999.00 debited from account XX9012 on 15-03-2024. Info: CULT FIT GYM. Avl Bal: INR 50,511.00
+
+ICICI Bank: INR 620.00 debited from account XX9012 on 21-03-2024. Info: OLA CAB BOOKING. Avl Bal: INR 49,891.00
+
+Axis Bank: Rs.999 debited from your a/c XX3456 on 05/03/24 for NETFLIX SUBSCRIPTION. Available Bal: Rs.31,001.00
+
+Axis Bank: Rs.4,800 debited from your a/c XX3456 on 10/03/24 for FLIPKART PURCHASE. Available Bal: Rs.26,201.00
+
+Axis Bank: Rs.1,850 debited from your a/c XX3456 on 16/03/24 for APOLLO PHARMACY. Available Bal: Rs.24,351.00
+
+Axis Bank: Rs.1,800 debited from your a/c XX3456 on 06/04/24 for PETROL FUEL BPCL. Available Bal: Rs.22,101.00
+
+Kotak: Spent Rs.680.00 on your Kotak Debit Card XX7890 at SWIGGY on 06-Mar-24. Avl Bal: Rs.28,320.00
+
+Kotak: Spent Rs.520.00 on your Kotak Debit Card XX7890 at UBER CAB on 12-Mar-24. Avl Bal: Rs.27,800.00
+
+Kotak: Spent Rs.8,900.00 on your Kotak Debit Card XX7890 at MYNTRA FASHION on 18-Mar-24. Avl Bal: Rs.18,900.00
+
+YES BANK: Rs.399/- debited from Acct XX2233 on 11/03/2024. Remarks: JIO POSTPAID BILL
+
+YES BANK: Rs.2,999/- debited from Acct XX2233 on 22/03/2024. Remarks: UNACADEMY SUBSCRIPTION
+
+YES BANK: Rs.850/- debited from Acct XX2233 on 25/03/2024. Remarks: BOOKMYSHOW MOVIE
+
+IndusInd Bank: INR 3,500.00 debited from your account XX4321 on 18/03/24 at DECATHLON SPORTS. Avl Bal: INR 22,400.00
+
+IndusInd Bank: INR 1,200.00 debited from your account XX4321 on 24/03/24 at PRACTO DOCTOR. Avl Bal: INR 21,200.00
+
+HDFC Bank: Rs.75,000.00 credited to a/c XX1234 on 01-04-24. Info: SALARY APRIL 2024. Avl Bal:Rs.1,08,921.00
+
+HDFC Bank: Rs.540.00 debited from a/c XX1234 on 02-04-24 at ZOMATO ORDER. Avl Bal:Rs.1,08,381.00
+
+SBI: Your a/c XX5678 is debited by Rs.2,100 on 04/04/24. Info: ELECTRICITY BILL MSEDCL. Avail Bal: Rs.6,000.00
+
+ICICI Bank: INR 5,500.00 debited from account XX9012 on 05-04-2024. Info: AMAZON SHOPPING. Avl Bal: INR 44,391.00
+
+Kotak: Spent Rs.12,000.00 on your Kotak Debit Card XX7890 at HDFC BANK EMI PAYMENT on 03-Apr-24. Avl Bal: Rs.6,900.00
+
+Axis Bank: Rs.3,500.00 debited from your a/c XX3456 on 07/04/24 for APOLLO HOSPITAL FEES. Available Bal: Rs.18,601.00
+
+YES BANK: Rs.1,199/- debited from Acct XX2233 on 09/04/2024. Remarks: AMAZON PRIME SUBSCRIPTION
+
+IndusInd Bank: INR 780.00 debited from your account XX4321 on 11/04/24 at UBER CAB BOOKING. Avl Bal: INR 20,420.00
+
+HDFC Bank: Rs.2,800.00 debited from a/c XX1234 on 14-04-24 at BIGBASKET GROCERIES. Avl Bal:Rs.1,05,581.00
+
+SBI: Your a/c XX5678 is debited by Rs.4,200 on 16/04/24. Info: FLIGHT TICKET INDIGO. Avail Bal: Rs.1,800.00
+
+Kotak: Spent Rs.650.00 on your Kotak Debit Card XX7890 at ZOMATO on 18-Apr-24. Avl Bal: Rs.6,250.00
